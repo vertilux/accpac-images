@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/layout.css">
+	</head>
+	<body>
+
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="page-header">
+        <h1>Vertilux Ltd.</h1>
+      </div>
+      <p class="lead">
+				This is the list of all Accpac items, the column Exist? with check if the
+				picture of the item exist. (true or false).
+			</p>
+
+			<table class="table">
+			  <thead>
+			    <tr>
+			      <th>Item Code</th>
+						<th>Description</th>
+						<th>Exist?</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+					<% @items.each do |item| %>
+						<tr>
+							<td><%= item.ITEMNO %></td>
+							<td><%= item.DESC %></td>
+							<td><%= File.file?("/path/to/folder/#{item.ITEMNO.delete(' ')}.jpg") %></td>
+						</tr>
+					<% end %>
+			  </tbody>
+			</table>
+    </div>
+
+		<!-- Footer -->
+	  <footer class="footer">
+	    <div class="container">
+	      <p class="text-muted"><%= Time.now.year %> Vertilux Ltd. | Developed by Jose Perez</p>
+	    </div>
+	  </footer>
+
+	</body>
+</html>
